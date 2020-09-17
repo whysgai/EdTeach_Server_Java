@@ -1,3 +1,13 @@
+.abut-right {
+    padding-right: 0;
+    margin-left: 0;
+}
+
+.abut-left {
+    padding-left: 0;
+    margin-left: 0;
+}
+
 .btn {
     margin-bottom: 1em;
 }
@@ -6,16 +16,22 @@
     display: none;
 }
 
-.center-text {
-    text-align: center;
+.login-label {
+    padding: 0 0 0 0;
 }
 
 .logo {
     justify-content: center;
     align-content: center;
+    text-align: center;
+}
 
+.title {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
 }
 
 .nav-elem {
     /*display: inline-block;*/
+    margin: 0 0 0 0;
 }

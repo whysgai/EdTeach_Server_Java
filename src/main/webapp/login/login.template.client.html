@@ -8,32 +8,37 @@
         <link href="login.style.client.css" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar">
-            <button class="btn navbar-toggler wbdv-field wbdv-hamburger" type="button">
-                <span class="navbar-toggler-icon">burger</span>
-            </button>
-<!--            <button class="nav-elem btn btn-primary col-sm-1 btn-block wbdv-field wbdv-hamburger">burger</button>-->
-            <a href="#default" class="nav-elem logo">CompanyLogo</a>
-<!--            <h1 class="nav-elem">EdTeach</h1>-->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="col-sm-1">
+                <button class="nav-elem btn btn-dark hide wbdv-field wbdv-hamburger">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <a href="#default" class="nav-elem col-sm-10 center-text logo">EdTeach Logo</a>
+            <div class="nav-elem col sm-1"></div>
         </nav>
         <div class="container">
-            <h2 class="">Sign In</h2>
+            <h2 class="title">Sign In</h2>
             <form>
                 <div class="form-group row">
-                    <label for="username" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
+                    <div>
+                        <label for="username" class=" login-label bg-light col-sm-2 abut-right col-form-label">Username</label>
+                    </div>
+                    <div class="abut-left col-sm-10">
                         <input class="form-control wbdv-field wbdv-username" id="username" placeholder="username/email">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
+                    <div>
+                        <label for="password" class=" login-label bg-light col-sm-2 abut-right col-form-label">Password</label>
+                    </div>
+                    <div class="abut-left col-sm-10">
                         <input type="password" class="form-control wbdv-field wbdv-password" id="password" placeholder="123abc#$%XYZ">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"></label>
-                    <div class="col-sm-10">
+<!--                    <label class="col-sm-2 col-form-label"></label>-->
+                    <div class="col-sm-12">
                         <!--<button class="btn btn-primary btn-block wbdv-login">Sign in</button>-->
                         <a href="" class="btn btn-primary btn-block wbdv-login">Log In</a>
                         <div class="row">
