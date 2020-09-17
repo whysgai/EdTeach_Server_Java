@@ -1,3 +1,21 @@
 .btn {
     margin-bottom: 1em;
 }
+
+.hide {
+    display: none;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.logo {
+    justify-content: center;
+    align-content: center;
+
+}
+
+.nav-elem {
+    /*display: inline-block;*/
+}
