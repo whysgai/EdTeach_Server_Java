@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your EdTeach Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+    <body>
+        <div class="container">
+            <h1>Profile</h1>
+            <form>
+                <div class="form-group row">
+                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                        <input class="form-control wbdv-field wbdv-username" id="username" placeholder="username" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+                    <div class="col-sm-10">
+                        <input class="form-control wbdv-field wbdv-phone" id="phone" placeholder="(123) 867-5309">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="email" placeholder="lane@dailyplanet.com">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="role" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select wbdv-field wbdv-role" id="role">
+                            <option value="Faculty">Faculty</option>
+                            <option value="Student">Student</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="birthdate" class="col-sm-2 col-form-label">Date of Birth</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control wbdv-field wbdv-dob" id="birthdate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <!--<button class="btn btn-primary btn-block wbdv-button wbdv-update">Update</button>-->
+                        <a href="#" class="btn btn-primary btn-block wbdv-button wbdv-update">Update</a>
+                        <!--<button class="btn btn-primary btn-block wbdv-button wbdv-logout">Logout</button>-->
+                        <a href="#" class="btn btn-primary btn-block wbdv-button wbdv-logout">Logout</a>
+                        <div class="row">
+                            <div class="alertFld wbdv-message"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
