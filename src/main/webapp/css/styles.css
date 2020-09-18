@@ -35,6 +35,12 @@
 .title {
     text-align: center;
     padding: 1rem 0 1rem 0;
+    margin-bottom: 0;
+}
+
+.title-align {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .nav-elem {
