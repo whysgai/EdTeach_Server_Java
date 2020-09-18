@@ -22,6 +22,10 @@
     display: none;
 }
 
+.font-black {
+    color: black;
+}
+
 .login-label {
     padding: 0 0 0 0;
 }
