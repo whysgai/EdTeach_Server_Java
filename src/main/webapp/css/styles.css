@@ -13,6 +13,11 @@
     margin-bottom: .5em;
 }
 
+.btn-align-veritcal {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
 .hide {
     display: none;
 }
