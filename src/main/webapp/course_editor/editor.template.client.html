@@ -6,6 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
+    <link href="editor.style.client.css" rel="stylesheet">
 </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,40 +20,35 @@
         </nav>
         <div class="container">
             <h1 class="">Course Editor</h1>
-
-
             <div class="row col-sm-12">
-                <div class="wbdv-module-list col-sm-4">
-                    <ul>
-                        <li class="wbdv-module-item">Module 1 -
+                <div class="bg-secondary wbdv-module-list col-sm-4">
+                    <ul class="list-of-btns">
+                        <li class="btn btn-dark btn-block wbdv-module-item">Module 1 -
                             <span class="wbdv-module-item-title">Books</span>
-                            <button class=""wbdv-module-item-delete-btn>X</button>
+                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+
                         </li>
-                        <li class="wbdv-module-item">Module 2 -
+                        <li class="btn btn-dark btn-block wbdv-module-item">Module 2 -
                             <span class="wbdv-module-item-title">Novels</span>
-                            <button class=""wbdv-module-item-delete-btn>X</button>
+                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
-                        <li class="wbdv-module-item">Module 3 -
+                        <li class="btn btn-dark btn-block wbdv-module-item">Module 3 -
                             <span class="wbdv-module-item-title">Short Stories</span>
-                            <button class=""wbdv-module-item-delete-btn>X</button>
+                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
-                        <li class="wbdv-module-item">Module 4 -
+                        <li class="btn btn-dark btn-block wbdv-module-item">Module 4 -
                             <span class="wbdv-module-item-title">Textbooks</span>
-                            <button class=""wbdv-module-item-delete-btn>X</button>
+                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                     <button class="btn btn-primary btn-block wbdv-module-item-add-btn">Add Module</button>
                 </div>
-
-
-
-
                 <div class=" col-sm-8">
-                    <div>
-                        <a href="#" class="wbdv-course-editor wbdv-close">X</a>
+                    <div class="marg-below">
+                        <button class="btn btn-outline-dark pull-right wbdv-course-editor wbdv-close"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h3 class="wbdv-course-title">ENG315 - Books Books Books</h3>
                     </div>
-                    <ul class="nav nav-tabs">
+                    <ul class="marg-below nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Lesson 1</a>
                         </li>
@@ -62,23 +58,78 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Lesson 3</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        </li>
+
                     </ul>
-                    <ul class="nav nav-pills">
+                    <ul class="marg-below nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Active</a>
+                            <a class="nav-link active" href="#">Topic 1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Topic 2</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Topic 3</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-link" href="#">Add Topic</a>
                         </li>
                     </ul>
                     <form>
 
+                        <div class="border border-med pad-a-little">
+                            <div class="">
+                                <h3>Heading Widget</h3>
+                                <div class="pull-right">
+                                    <button class="btn btn-warning">
+                                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="btn btn-danger">
+                                       <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <select class="form-group form-control">
+                                    <option>Widget Type 1</option>
+                                    <option>Widget Type 2</option>
+                                    <option>Widget Type 3</option>
+                                    <option>Widget Type 4</option>
+                                </select>
+
+                            </div>
+                            <div class="">
+                                <div class="form-group">
+                                    <input class="form-control wbdv-field wbdv-username" id="username" placeholder="Heading test">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Heading 1</option>
+                                        <option>Heading 2</option>
+                                        <option>Heading 3</option>
+                                        <option>Heading 4</option>
+                                        <option>Heading 5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control wbdv-field wbdv-username" id="username" placeholder="Widget name">
+                                </div>
+                                <div class="form-group">
+                                    <h4>Preview</h>
+                                </div>
+                                <div class="form-group">
+                                    <h2>Heading Text</h2>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-success">Save</button>
+                            <button class="btn btn-outline-info">Preview</button>
+                        </div>
                     </form>
                 </div>
             </div>
