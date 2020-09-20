@@ -23,8 +23,20 @@
                 <h1 class="pull-left">Course Editor</h1>
                 <button class="btn btn-outline-dark pull-right wbdv-course-editor wbdv-close"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
+            <form class="d-block d-sm-none">
+                <div class="form-group row">
+                    <label for="module" class="col-form-label">Module</label>
+                    <div class="">
+                        <select class="custom-select wbdv-field wbdv-role" id="module">
+                            <option value="Mod 1">Mod 1</option>
+                            <option value="Mod 2">Mod 2</option>
+                            <option value="Mod 3">Mod 3</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
             <div class="row col-sm-12">
-                <div class="bg-secondary wbdv-module-list col-sm-4">
+                <div class="bg-secondary wbdv-module-list col-sm-4  d-none d-sm-block">
                     <ul class="list-of-btns">
                         <li class="btn btn-dark btn-block wbdv-module-item">Module 1 -
                             <span class="wbdv-module-item-title">Books</span>
@@ -50,7 +62,7 @@
                     <div class="marg-below">
                         <h3 class="wbdv-course-title">ENG315 - Books Books Books</h3>
                     </div>
-                    <ul class="marg-below nav nav-tabs wbdv-lesson-tabs">
+                    <ul class="marg-below nav nav-tabs wbdv-lesson-tabs  d-none d-sm-block">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Lesson 1</a>
                         </li>
@@ -65,7 +77,7 @@
                         </li>
 
                     </ul>
-                    <ul class="marg-below nav nav-pills wbdv-topic-pill-list">
+                    <ul class="marg-below nav nav-pills wbdv-topic-pill-list d-none d-sm-block">
                         <li class="nav-item">
                             <a class="nav-link active wbdv-topic-pill" href="#">Topic 1</a>
                         </li>
