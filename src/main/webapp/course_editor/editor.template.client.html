@@ -19,36 +19,38 @@
             <div class="nav-elem col sm-1"></div>
         </nav>
         <div class="container">
-            <h1 class="">Course Editor</h1>
+            <div>
+                <h1 class="pull-left">Course Editor</h1>
+                <button class="btn btn-outline-dark pull-right wbdv-course-editor wbdv-close"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
             <div class="row col-sm-12">
                 <div class="bg-secondary wbdv-module-list col-sm-4">
                     <ul class="list-of-btns">
                         <li class="btn btn-dark btn-block wbdv-module-item">Module 1 -
                             <span class="wbdv-module-item-title">Books</span>
-                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                            <a href="#" class="pull-right font-white wbdv-module-item-delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 
                         </li>
                         <li class="btn btn-dark btn-block wbdv-module-item">Module 2 -
                             <span class="wbdv-module-item-title">Novels</span>
-                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                            <a href="#" class="pull-right font-white wbdv-module-item-delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
                         <li class="btn btn-dark btn-block wbdv-module-item">Module 3 -
                             <span class="wbdv-module-item-title">Short Stories</span>
-                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                            <a href="#" class="pull-right font-white wbdv-module-item-delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
                         <li class="btn btn-dark btn-block wbdv-module-item">Module 4 -
                             <span class="wbdv-module-item-title">Textbooks</span>
-                            <a href="#" class="pull-right font-white"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                            <a href="#" class="pull-right font-white wbdv-module-item-delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                     <button class="btn btn-primary btn-block wbdv-module-item-add-btn">Add Module</button>
                 </div>
                 <div class=" col-sm-8">
                     <div class="marg-below">
-                        <button class="btn btn-outline-dark pull-right wbdv-course-editor wbdv-close"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h3 class="wbdv-course-title">ENG315 - Books Books Books</h3>
                     </div>
-                    <ul class="marg-below nav nav-tabs">
+                    <ul class="marg-below nav nav-tabs wbdv-lesson-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Lesson 1</a>
                         </li>
@@ -59,21 +61,21 @@
                             <a class="nav-link" href="#">Lesson 3</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                            <a href="#"  class="nav-link wbdv-lesson-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         </li>
 
                     </ul>
-                    <ul class="marg-below nav nav-pills">
+                    <ul class="marg-below nav nav-pills wbdv-topic-pill-list">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Topic 1</a>
+                            <a class="nav-link active wbdv-topic-pill" href="#">Topic 1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Topic 2</a>
+                            <a class="nav-link wbdv-topic-pill" href="#">Topic 2</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Topic 3</a>
+                            <a class="nav-link wbdv-topic-pill" href="#">Topic 3</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item wbdv-topic-add-btn">
                             <a class="nav-link" href="#">Add Topic</a>
                         </li>
                     </ul>
