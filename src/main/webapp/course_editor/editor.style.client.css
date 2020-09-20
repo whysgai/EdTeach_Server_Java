@@ -1,3 +1,7 @@
 h3 {
     display: inline-block;
 }
+
+.pad-clear {
+    padding-top: 3.5rem;
+}
