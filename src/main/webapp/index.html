@@ -5,7 +5,7 @@
         <title>Login To EdTeach</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/styles.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,7 +19,7 @@
         </nav>
         <div class="container">
             <h1>Welcome to EdTeach</h1>
-            <div class="row">
+            <div class="row marg-below">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
@@ -34,18 +34,18 @@
                         <div class="card-body">
                             <h5 class="card-title">Register</h5>
                             <p class="card-text">Create a new account--registering directs users to the profile page, also links to the login page</p>
-                            <a href="#" class="btn btn-primary">Register</a>
+                            <a href="register/register.template.client.html" class="btn btn-primary">Register</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row marg-below">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Profile</h5>
                             <p class="card-text">View and update user profile</p>
-                            <a href="#" class="btn btn-primary">See profile</a>
+                            <a href="profile/profile.template.client.html" class="btn btn-primary">See profile</a>
                         </div>
                     </div>
                 </div>
@@ -54,41 +54,22 @@
                         <div class="card-body">
                             <h5 class="card-title">Course Manager</h5>
                             <p class="card-text">View a list of courses and add new ones</p>
-                            <a href="#" class="btn btn-primary">Manage Courses</a>
+                            <a href="course_manager/coursemanager.template.client.html" class="btn btn-primary">Manage Courses</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row marg-below">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Course Editor</h5>
                             <p class="card-text">Edit the modules, topics, and lessons of a course using various widgets</p>
-                            <a href="#" class="btn btn-primary">Edit courses</a>
+                            <a href="course_editor/editor.template.client.html" class="btn btn-primary">Edit courses</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            <ul>
-                <li>
-                    <a href="login/login.template.client.html">Login</a>
-                </li>
-                <li>
-                    <a href="register/register.template.client.html">Register</a>
-                </li>
-                <li>
-                    <a href="profile/profile.template.client.html">Profile</a>
-                </li>
-                <li>
-                    <a href="course_manager/coursemanager.template.client.html">Manager</a>
-                </li>
-                <li>
-                    <a href="course_editor/editor.template.client.html">Editor</a>
-                </li>
-            </ul>
         </div>
     </body>
 </html>
