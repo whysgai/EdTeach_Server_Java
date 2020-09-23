@@ -23,6 +23,13 @@ let tbody
 let template
 let clone
 
+const deleteUserTable = (event) => {
+    const deleteBtn = $(event.currentTarget)
+    // deleteBtn.parent().parent().parent().remove()
+    deleteBtn.parents("tr.wbdv-template").remove()
+    console.log("delete user from table")
+}
+
 const init = () => {
     tbody = $("tbody")
     template = $("tr.wbdv-template")
@@ -34,6 +41,7 @@ const init = () => {
         clone.find(".wbdv-username").html(user.username)
         clone.find(".wbdv-first-name").html(user.fName)
         clone.find(".wbdv-last-name").html(user.lName)
+        clone.find(".wbdv-remove").click(deleteUserTable)
         tbody.append(clone)
     }
 }
