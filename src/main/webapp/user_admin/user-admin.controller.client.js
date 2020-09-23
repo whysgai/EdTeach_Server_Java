@@ -22,6 +22,9 @@ let users = [
 let tbody
 let template
 let clone
+// Use $ in variable naming to indicate presence in DOM
+let $createBtn
+let $usernameFld, $firstNameFld
 
 const deleteUserFromTable = (event) => {
     const deleteBtn = $(event.currentTarget)
@@ -53,9 +56,28 @@ const removeUserFromArray = (index) => {
     console.log("remove user from array")
 }
 
+const createUser = () => {
+    console.log("Create user!")
+    const username = $usernameFld.val()
+    const firstname = $firstNameFld.val()
+
+    const newUser = {
+        username: username,
+        fName: firstname,
+        lName: "TBD",
+        role: "TDB"
+    }
+    users.push(newUser)
+    renderUsers(users)
+}
+
 const init = () => {
     tbody = $("tbody")
     template = $("tr.wbdv-template")
+    $createBtn = $(".wbdv-create").click(createUser)
+    $usernameFld = $("#usernameFld")
+    $firstNameFld = $("#firstNameFld")
+
     renderUsers(users)
 }
 $(init)
