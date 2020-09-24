@@ -22,11 +22,12 @@ let users = [
 let tbody
 let template
 let clone
+let userToEdit
+
 // Use $ in variable naming to indicate presence in DOM
 let $createBtn
 let $updateBtn
 let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
-let userToEdit
 
 const deleteUserFromTable = (event) => {
     const deleteBtn = $(event.currentTarget)
@@ -100,12 +101,12 @@ const editUser = (index) => {
 }
 
 const updateUser = (event) => {
-    console.log("Create user!")
-    const username = $usernameFld.val()
+    console.log("Edit user!")
+    userToEdit.username = $usernameFld.val()
     // const password = $passwordFld.val()
-    const firstname = $firstNameFld.val()
-    const lastname = $lastNameFld.val()
-    const role = $roleFld.val()
+    userToEdit.fName = $firstNameFld.val()
+    userToEdit.lName = $lastNameFld.val()
+    userToEdit.role = $roleFld.val()
 
     // Can use same field for read/write depending on passed args
     $usernameFld.val("")
@@ -114,13 +115,6 @@ const updateUser = (event) => {
     $lastNameFld.val("")
     $roleFld.val("")
 
-    const newUser = {
-        username: username,
-        fName: firstname,
-        lName: lastname,
-        role: role
-    }
-    users.push(newUser)
     renderUsers(users)
 }
 
