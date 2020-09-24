@@ -24,7 +24,9 @@ let template
 let clone
 // Use $ in variable naming to indicate presence in DOM
 let $createBtn
+let $updateBtn
 let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
+let userToEdit
 
 const deleteUserFromTable = (event) => {
     const deleteBtn = $(event.currentTarget)
@@ -45,6 +47,7 @@ const renderUsers = (users) => {
         clone.find(".wbdv-last-name").html(user.lName)
         // clone.find(".wbdv-remove").click(deleteUserFromTable)
         clone.find(".wbdv-remove").click(() => removeUserFromArray(i))
+        clone.find(".wbdv-edit").click(() => editUser(i))
         tbody.append(clone)
     }
 }
@@ -81,8 +84,23 @@ const createUser = () => {
     renderUsers(users)
 }
 
-const updateUser = () => {
-    console.log("Update user!")
+const editUser = (index) => {
+    console.log("Edit user!")
+
+    userToEdit = users[index]
+
+    console.log(userToEdit.username)
+
+    $usernameFld.val(userToEdit.username)
+    $passwordFld.val("")
+    $firstNameFld.val(userToEdit.fName)
+    $lastNameFld.val(userToEdit.lName)
+    $roleFld.val(user.role)
+
+}
+
+const updateUser = (event) => {
+    console.log("Create user!")
     const username = $usernameFld.val()
     // const password = $passwordFld.val()
     const firstname = $firstNameFld.val()
@@ -110,6 +128,7 @@ const init = () => {
     tbody = $("tbody")
     template = $("tr.wbdv-template")
     $createBtn = $(".wbdv-create").click(createUser)
+    $updateBtn = $(".wbdv-update").click(updateUser)
     $usernameFld = $("#usernameFld")
     $passwordFld = $("#passwordFld")
     $firstNameFld = $("#firstNameFld")
