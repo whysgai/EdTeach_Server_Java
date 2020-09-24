@@ -66,7 +66,35 @@ const createUser = () => {
 
     // Can use same field for read/write depending on passed args
     $usernameFld.val("")
+    $passwordFld.val("")
     $firstNameFld.val("")
+    $lastNameFld.val("")
+    $roleFld.val("")
+
+    const newUser = {
+        username: username,
+        fName: firstname,
+        lName: lastname,
+        role: role
+    }
+    users.push(newUser)
+    renderUsers(users)
+}
+
+const updateUser = () => {
+    console.log("Update user!")
+    const username = $usernameFld.val()
+    // const password = $passwordFld.val()
+    const firstname = $firstNameFld.val()
+    const lastname = $lastNameFld.val()
+    const role = $roleFld.val()
+
+    // Can use same field for read/write depending on passed args
+    $usernameFld.val("")
+    $passwordFld.val("")
+    $firstNameFld.val("")
+    $lastNameFld.val("")
+    $roleFld.val("")
 
     const newUser = {
         username: username,
