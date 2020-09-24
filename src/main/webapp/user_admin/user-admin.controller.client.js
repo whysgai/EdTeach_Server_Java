@@ -24,7 +24,7 @@ let template
 let clone
 // Use $ in variable naming to indicate presence in DOM
 let $createBtn
-let $usernameFld, $firstNameFld
+let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
 
 const deleteUserFromTable = (event) => {
     const deleteBtn = $(event.currentTarget)
@@ -59,13 +59,20 @@ const removeUserFromArray = (index) => {
 const createUser = () => {
     console.log("Create user!")
     const username = $usernameFld.val()
+    // const password = $passwordFld.val()
     const firstname = $firstNameFld.val()
+    const lastname = $lastNameFld.val()
+    const role = $roleFld.val()
+
+    // Can use same field for read/write depending on passed args
+    $usernameFld.val("")
+    $firstNameFld.val("")
 
     const newUser = {
         username: username,
         fName: firstname,
-        lName: "TBD",
-        role: "TDB"
+        lName: lastname,
+        role: role
     }
     users.push(newUser)
     renderUsers(users)
@@ -76,7 +83,10 @@ const init = () => {
     template = $("tr.wbdv-template")
     $createBtn = $(".wbdv-create").click(createUser)
     $usernameFld = $("#usernameFld")
+    $passwordFld = $("#passwordFld")
     $firstNameFld = $("#firstNameFld")
+    $lastNameFld = $("#lastNameFld")
+    $roleFld = $("#roleFld")
 
     renderUsers(users)
 }
