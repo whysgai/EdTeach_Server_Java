@@ -12,13 +12,32 @@ function AdminUserServiceClient() {
             .then(response => response.json())
     }
 
-    function createUser(user) {}
+    function createUser(user) {
+        return fetch('https://wbdv-generic-server.herokuapp.com/api/wcohen/users', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+    }
+
     function findUserById(userId) {}
-    function updateUser(userId, user) {}
+
+    function updateUser(userId, user) {
+        return fetch(`https://wbdv-generic-server.herokuapp.com/api/wcohen/users/${userId}`, {
+            method: 'PUT',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+    }
+
     function deleteUser(userId) {
         return fetch('https://wbdv-generic-server.herokuapp.com/api/wcohen/users/' + userId, {
             method: 'DELETE'
         })
-
     }
 }

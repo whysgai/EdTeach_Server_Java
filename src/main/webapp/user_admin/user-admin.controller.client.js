@@ -25,7 +25,7 @@ let users = [
 let tbody
 let template
 let clone
-let userToEdit
+let selectedUser
 
 // Use $ in variable naming to indicate presence in DOM
 let $createBtn
@@ -58,9 +58,9 @@ const renderUsers = (users) => {
 }
 
 const removeUserFromArray = (_index) => {
-    // console.log(index)
+    //console.log(index)
     const user = users[_index]
-    const userID = users.userid
+    const userID = user._id
     userService.deleteUser(userID)
         .then(response => {
             users.splice(_index, 1)
@@ -92,38 +92,57 @@ const createUser = () => {
     $roleFld.val("")
 
     const newUser = {
-        userid: generateID(),
+        // userid: generateID(),
         username: username,
         firstname: firstname,
         lastname: lastname,
         role: role
     }
-    users.push(newUser)
-    renderUsers(users)
+
+    userService.createUser(newUser)
+        .then(actualNewUser => {
+            users.push(actualNewUser)
+            renderUsers(users)
+        })
 }
 
 const editUser = (index) => {
     console.log("Edit user!")
 
-    userToEdit = users[index]
+    selectedUser = users[index]
 
-    console.log(userToEdit.username)
+    console.log(selectedUser.username)
 
-    $usernameFld.val(userToEdit.username)
+    $usernameFld.val(selectedUser.username)
     $passwordFld.val("")
-    $firstNameFld.val(userToEdit.firstname)
-    $lastNameFld.val(userToEdit.lastname)
+    $firstNameFld.val(selectedUser.firstname)
+    $lastNameFld.val(selectedUser.lastname)
     $roleFld.val(user.role)
 
 }
 
 const updateUser = (event) => {
     console.log("Edit user!")
-    userToEdit.username = $usernameFld.val()
+    const updateUsername = $usernameFld.val()
     // const password = $passwordFld.val()
-    userToEdit.fName = $firstNameFld.val()
-    userToEdit.lName = $lastNameFld.val()
-    userToEdit.role = $roleFld.val()
+    const updateFirstName = $firstNameFld.val()
+    const updateLastName = $lastNameFld.val()
+    const updateRole = $roleFld.val()
+    const userID = selectedUser._id
+
+    userService.updateUser(userID, {
+        username: updateUsername,
+        firstname: updateFirstName,
+        lastname: updateLastName,
+        role: updateRole
+    })
+        .then(response => {
+            selectedUser.username = updateUsername
+            selectedUser.firstname = updateFirstName
+            selectedUser.lastname = updateLastName
+            selectedUser.role = updateRole
+            renderUsers(users)
+        })
 
     // Can use same field for read/write depending on passed args
     $usernameFld.val("")
@@ -132,7 +151,7 @@ const updateUser = (event) => {
     $lastNameFld.val("")
     $roleFld.val("")
 
-    renderUsers(users)
+
 }
 
 const init = () => {
