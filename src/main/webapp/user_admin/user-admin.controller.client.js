@@ -1,20 +1,20 @@
 let users = [
     {
         username: 'wonder',
-        fName: 'Diana',
-        lName: 'Prince',
+        firstname: 'Diana',
+        lastname: 'Prince',
         role: 'Faculty'
     },
     {
         username: 'super',
-        fName: 'Clark',
-        lName: 'Kent',
+        firstname: 'Clark',
+        lastname: 'Kent',
         role: 'Faculty'
     },
     {
         username: 'bat',
-        fName: 'Bruce',
-        lName: 'Wayne',
+        firstname: 'Bruce',
+        lastname: 'Wayne',
         role: 'Faculty'
     }
 ]
@@ -28,6 +28,7 @@ let userToEdit
 let $createBtn
 let $updateBtn
 let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
+const userService = new AdminUserServiceClient()
 
 const deleteUserFromTable = (event) => {
     const deleteBtn = $(event.currentTarget)
@@ -44,8 +45,8 @@ const renderUsers = (users) => {
         // swap wbdv-hidden for hide class
         clone.removeClass("wbdv-hidden")
         clone.find(".wbdv-username").html(user.username)
-        clone.find(".wbdv-first-name").html(user.fName)
-        clone.find(".wbdv-last-name").html(user.lName)
+        clone.find(".wbdv-first-name").html(user.firstname)
+        clone.find(".wbdv-last-name").html(user.lastname)
         // clone.find(".wbdv-remove").click(deleteUserFromTable)
         clone.find(".wbdv-remove").click(() => removeUserFromArray(i))
         clone.find(".wbdv-edit").click(() => editUser(i))
@@ -77,8 +78,8 @@ const createUser = () => {
 
     const newUser = {
         username: username,
-        fName: firstname,
-        lName: lastname,
+        firstname: firstname,
+        lastname: lastname,
         role: role
     }
     users.push(newUser)
@@ -94,8 +95,8 @@ const editUser = (index) => {
 
     $usernameFld.val(userToEdit.username)
     $passwordFld.val("")
-    $firstNameFld.val(userToEdit.fName)
-    $lastNameFld.val(userToEdit.lName)
+    $firstNameFld.val(userToEdit.firstname)
+    $lastNameFld.val(userToEdit.lastname)
     $roleFld.val(user.role)
 
 }
@@ -119,6 +120,13 @@ const updateUser = (event) => {
 }
 
 const init = () => {
+
+    userService.findAllUsers()
+        .then((users) => {
+            console.log(users)
+            renderUsers(users)
+        })
+
     tbody = $("tbody")
     template = $("tr.wbdv-template")
     $createBtn = $(".wbdv-create").click(createUser)

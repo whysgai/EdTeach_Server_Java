@@ -7,11 +7,18 @@ function AdminUserServiceClient() {
     this.updateUser = updateUser;
     this.url = 'https://wbdv-generic-server.herokuapp.com/api/wcohen/users';
     var self = this;
-    function createUser(user) {}
     function findAllUsers() {
-        fetch(this.url)
+        return fetch('https://wbdv-generic-server.herokuapp.com/api/wcohen/users')
+            .then(response => response.json())
     }
+
+    function createUser(user) {}
     function findUserById(userId) {}
     function updateUser(userId, user) {}
-    function deleteUser(userId) {}
+    function deleteUser(userId) {
+        return fetch('https://wbdv-generic-server.herokuapp.com/api/wcohen/users/' + userId, {
+            method: 'DELETE'
+        })
+
+    }
 }
