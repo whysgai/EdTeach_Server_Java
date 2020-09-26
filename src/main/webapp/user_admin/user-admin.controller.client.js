@@ -1,17 +1,20 @@
 let users = [
     {
+        userid: '0000001',
         username: 'wonder',
         firstname: 'Diana',
         lastname: 'Prince',
         role: 'Faculty'
     },
     {
+        userid: '0000002',
         username: 'super',
         firstname: 'Clark',
         lastname: 'Kent',
         role: 'Faculty'
     },
     {
+        userid: '0000003',
         username: 'bat',
         firstname: 'Bruce',
         lastname: 'Wayne',
@@ -54,11 +57,23 @@ const renderUsers = (users) => {
     }
 }
 
-const removeUserFromArray = (index) => {
+const removeUserFromArray = (_index) => {
     // console.log(index)
-    users.splice(index, 1)
-    renderUsers(users)
-    console.log("remove user from array")
+    const user = users[_index]
+    const userID = users.userid
+    userService.deleteUser(userID)
+        .then(response => {
+            users.splice(_index, 1)
+            renderUsers(users)
+            console.log("remove user from array")
+        })
+}
+
+const generateID = () => {
+    const prefix = new Date().getFullYear()
+    const suffix = Math.floor(Math.random() * (1000 - 0) + 0)
+    const id = "" + prefix + suffix
+    return id
 }
 
 const createUser = () => {
@@ -77,6 +92,7 @@ const createUser = () => {
     $roleFld.val("")
 
     const newUser = {
+        userid: generateID(),
         username: username,
         firstname: firstname,
         lastname: lastname,
@@ -121,12 +137,6 @@ const updateUser = (event) => {
 
 const init = () => {
 
-    userService.findAllUsers()
-        .then((users) => {
-            console.log(users)
-            renderUsers(users)
-        })
-
     tbody = $("tbody")
     template = $("tr.wbdv-template")
     $createBtn = $(".wbdv-create").click(createUser)
@@ -137,7 +147,14 @@ const init = () => {
     $lastNameFld = $("#lastNameFld")
     $roleFld = $("#roleFld")
 
-    renderUsers(users)
+    //renderUsers(users)
+
+    userService.findAllUsers()
+        .then((_users) => {
+            console.log(_users)
+            users = _users
+            renderUsers(users)
+        })
 }
 $(init)
 
