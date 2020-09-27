@@ -23,7 +23,12 @@ function AdminUserServiceClient() {
             .then(response => response.json())
     }
 
-    function findUserById(userId) {}
+    function findUserById(userId) {
+        console.log("Quereying server for userID " + userId)
+        return fetch(`https://wbdv-generic-server.herokuapp.com/api/wcohen/users/${userId}`, {
+        })
+            .then(response => response.json())
+    }
 
     function updateUser(userId, user) {
         return fetch(`https://wbdv-generic-server.herokuapp.com/api/wcohen/users/${userId}`, {

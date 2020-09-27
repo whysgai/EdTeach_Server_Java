@@ -31,6 +31,7 @@
 // Use $ in variable naming to indicate presence in DOM
     let $createBtn
     let $updateBtn
+    let $searchBtn
     let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
     const userService = new AdminUserServiceClient()
 
@@ -84,6 +85,23 @@
                 renderUsers(users)
                 console.log("remove user from array")
             })
+    }
+
+    const findUserByID = (event) => {
+        for (let i = 0; i < users.length; i++) {
+            if ($usernameFld.val() == users[i].username ||
+                $firstNameFld.val() == users[i].firstname ||
+                $lastNameFld.val() == users[i].lastname) {
+                console.log("Match found:")
+                console.log(users[i].username)
+                console.log(users[i]._id)
+                userService.findUserById(users[i]._id)
+                    .then(foundUser => {
+                        console.log(foundUser)
+                        renderUser(foundUser)
+                    })
+            }
+        }
     }
 
     const generateID = () => {
@@ -175,6 +193,7 @@
 
         tbody = $("tbody")
         template = $("tr.wbdv-template")
+        $searchBtn = $(".wbdv-search").click(findUserByID)
         $createBtn = $(".wbdv-create").click(createUser)
         $updateBtn = $(".wbdv-update").click(updateUser)
         $usernameFld = $("#usernameFld")
