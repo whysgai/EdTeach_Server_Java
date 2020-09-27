@@ -6,7 +6,7 @@ function AdminUserServiceClient() {
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
     this.url = 'https://wbdv-generic-server.herokuapp.com/api/wcohen/users';
-    var self = this;
+    let self = this;
     function findAllUsers() {
         return fetch('https://wbdv-generic-server.herokuapp.com/api/wcohen/users')
             .then(response => response.json())
@@ -24,7 +24,6 @@ function AdminUserServiceClient() {
     }
 
     function findUserById(userId) {
-        console.log("Quereying server for userID " + userId)
         return fetch(`https://wbdv-generic-server.herokuapp.com/api/wcohen/users/${userId}`, {
         })
             .then(response => response.json())

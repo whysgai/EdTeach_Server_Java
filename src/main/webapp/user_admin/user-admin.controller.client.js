@@ -23,28 +23,25 @@
         }
     ]
 
-    let tbody
-    let template
     let clone
     let selectedUser
 
-// Use $ in variable naming to indicate presence in DOM
-    let $createBtn
-    let $updateBtn
-    let $searchBtn
+    // Use $ in variable naming to indicate presence in DOM
+    let $tbody, $template
+    let $createBtn, $updateBtn, $searchBtn
     let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
+
     const userService = new AdminUserServiceClient()
 
+    // Deletes locally only, depricated
     const deleteUserFromTable = (event) => {
         const deleteBtn = $(event.currentTarget)
-        // deleteBtn.parent().parent().parent().remove()
         deleteBtn.parents("tr.wbdv-template").remove()
-        console.log("delete user from table")
     }
 
     const renderUser = (user) => {
-        tbody.empty()
-        clone = template.clone()
+        $tbody.empty()
+        clone = $template.clone()
         // swap wbdv-hidden for hide class
         clone.removeClass("wbdv-hidden")
         clone.find(".wbdv-username").html(user.username)
@@ -54,14 +51,15 @@
         // clone.find(".wbdv-remove").click(deleteUserFromTable)
         clone.find(".wbdv-remove").click(() => removeUserFromArray(i))
         clone.find(".wbdv-edit").click(() => editUser(i))
-        tbody.append(clone)
+        $tbody.append(clone)
     }
 
     const renderUsers = (users) => {
-        tbody.empty()
+        $tbody.empty()
+        let user
         for (let i = 0; i < users.length; i++) {
             user = users[i]
-            clone = template.clone()
+            clone = $template.clone()
             // swap wbdv-hidden for hide class
             clone.removeClass("wbdv-hidden")
             clone.find(".wbdv-username").html(user.username)
@@ -71,19 +69,17 @@
             // clone.find(".wbdv-remove").click(deleteUserFromTable)
             clone.find(".wbdv-remove").click(() => removeUserFromArray(i))
             clone.find(".wbdv-edit").click(() => editUser(i))
-            tbody.append(clone)
+            $tbody.append(clone)
         }
     }
 
     const removeUserFromArray = (_index) => {
-        //console.log(index)
         const user = users[_index]
         const userID = user._id
         userService.deleteUser(userID)
             .then(response => {
                 users.splice(_index, 1)
                 renderUsers(users)
-                console.log("remove user from array")
             })
     }
 
@@ -92,12 +88,8 @@
             if ($usernameFld.val() == users[i].username ||
                 $firstNameFld.val() == users[i].firstname ||
                 $lastNameFld.val() == users[i].lastname) {
-                console.log("Match found:")
-                console.log(users[i].username)
-                console.log(users[i]._id)
                 userService.findUserById(users[i]._id)
                     .then(foundUser => {
-                        console.log(foundUser)
                         renderUser(foundUser)
                     })
             }
@@ -114,7 +106,6 @@
     const createUser = () => {
         console.log("Create user!")
         const username = $usernameFld.val()
-        // const password = $passwordFld.val()
         const firstname = $firstNameFld.val()
         const lastname = $lastNameFld.val()
         const role = $roleFld.val()
@@ -127,7 +118,6 @@
         $roleFld.val("")
 
         const newUser = {
-            // userid: generateID(),
             username: username,
             firstname: firstname,
             lastname: lastname,
@@ -142,18 +132,12 @@
     }
 
     const editUser = (index) => {
-        console.log("Edit user!")
-
         selectedUser = users[index]
-
-        console.log(selectedUser.username)
-
         $usernameFld.val(selectedUser.username)
         $passwordFld.val("")
         $firstNameFld.val(selectedUser.firstname)
         $lastNameFld.val(selectedUser.lastname)
         $roleFld.val(user.role)
-
     }
 
     const updateUser = (event) => {
@@ -191,8 +175,8 @@
 
     const init = () => {
 
-        tbody = $("tbody")
-        template = $("tr.wbdv-template")
+        $tbody = $("tbody")
+        $template = $("tr.wbdv-template")
         $searchBtn = $(".wbdv-search").click(findUserByID)
         $createBtn = $(".wbdv-create").click(createUser)
         $updateBtn = $(".wbdv-update").click(updateUser)
@@ -211,17 +195,4 @@
     }
     $(init)
 
-// <tr class="wbdv-template wbdv-user wbdv-hidden">
-//     <td class="wbdv-username">wonderwoman</td>
-// <td>&nbsp;</td>
-// <td class="wbdv-first-name">Diana</td>
-// <td class="wbdv-last-name">Prince</td>
-// <td class="wbdv-role">FACULTY</td>
-// <td class="wbdv-actions">
-//     <span class="float-right">
-//         <i class="fa-2x fa fa-times wbdv-remove"></i>
-//         <i class="fa-2x fa fa-pencil wbdv-edit"></i>
-//     </span>
-// </td>
-// </tr>
 })();
