@@ -84,16 +84,27 @@
     }
 
     const findUserByID = (event) => {
-        for (let i = 0; i < users.length; i++) {
-            if ($usernameFld.val() == users[i].username ||
-                $firstNameFld.val() == users[i].firstname ||
-                $lastNameFld.val() == users[i].lastname) {
-                userService.findUserById(users[i]._id)
-                    .then(foundUser => {
-                        renderUser(foundUser)
-                    })
+        if (!$usernameFld.val() &&
+            !$firstNameFld.val() &&
+            !$lastNameFld.val()) {
+            userService.findAllUsers()
+                .then((_users) => {
+                    users = _users
+                    renderUsers(users)
+                })
+        } else {
+            for (let i = 0; i < users.length; i++) {
+                if ($usernameFld.val() == users[i].username ||
+                    $firstNameFld.val() == users[i].firstname ||
+                    $lastNameFld.val() == users[i].lastname) {
+                    userService.findUserById(users[i]._id)
+                        .then(foundUser => {
+                            renderUser(foundUser)
+                        })
+                }
             }
         }
+
     }
 
     const generateID = () => {
@@ -104,7 +115,6 @@
     }
 
     const createUser = () => {
-        console.log("Create user!")
         const username = $usernameFld.val()
         const firstname = $firstNameFld.val()
         const lastname = $lastNameFld.val()
@@ -141,7 +151,6 @@
     }
 
     const updateUser = (event) => {
-        console.log("Edit user!")
         const updateUsername = $usernameFld.val()
         // const password = $passwordFld.val()
         const updateFirstName = $firstNameFld.val()
