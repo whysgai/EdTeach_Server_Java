@@ -34,8 +34,8 @@
 
     // Use $ in variable naming to indicate presence in DOM
     let $tbody, $template
-    let $createBtn, $updateBtn, $searchBtn
-    let $usernameFld, $passwordFld, $emailFld, $firstNameFld, $lastNameFld, $roleFld
+    let $createBtn, $updateBtn, $searchBtn, $syncBtn
+    let $searchFld, $usernameFld, $passwordFld, $emailFld, $firstNameFld, $lastNameFld, $roleFld
 
     const userService = new AdminUserServiceClient()
 
@@ -43,6 +43,17 @@
     const deleteUserFromTable = (event) => {
         const deleteBtn = $(event.currentTarget)
         deleteBtn.parents("tr.wbdv-template").remove()
+    }
+
+    const clearFields = () => {
+        $searchFld.val("")
+        $usernameFld.val("")
+        $emailFld.val("")
+        $passwordFld.val("")
+        $firstNameFld.val("")
+        $lastNameFld.val("")
+        $roleFld.val("")
+
     }
 
     const renderUser = (user) => {
@@ -81,6 +92,15 @@
         }
     }
 
+    const refreshUsers = (event) => {
+        userService.findAllUsers()
+            .then((_users) => {
+                console.log(_users)
+                users = _users
+                renderUsers(users)
+            })
+    }
+
     const removeUserFromArray = (_index) => {
         const user = users[_index]
         const userID = user._id
@@ -115,7 +135,6 @@
         }
     }
 
-
     const generateID = () => {
         const prefix = new Date().getFullYear()
         const suffix = Math.floor(Math.random() * (1000 - 0) + 0)
@@ -131,12 +150,6 @@
         const role = $roleFld.val()
 
         // Can use same field for read/write depending on passed args
-        $usernameFld.val("")
-        $emailFld.val("")
-        $passwordFld.val("")
-        $firstNameFld.val("")
-        $lastNameFld.val("")
-        $roleFld.val("")
 
         const newUser = {
             username: username,
@@ -150,6 +163,7 @@
         userService.createUser(newUser)
             .then(actualNewUser => {
                 users.push(actualNewUser)
+                clearFields()
                 renderUsers(users)
             })
     }
@@ -186,22 +200,17 @@
                 selectedUser.firstname = updateFirstName
                 selectedUser.lastname = updateLastName
                 selectedUser.role = updateRole
+                clearFields()
                 renderUsers(users)
             })
-
-        // Can use same field for read/write depending on passed args
-        $usernameFld.val("")
-        $emailFld.val("")
-        $passwordFld.val("")
-        $firstNameFld.val("")
-        $lastNameFld.val("")
-        $roleFld.val("")
     }
 
     const init = () => {
 
         $tbody = $("tbody")
         $template = $("tr.wbdv-template")
+        $searchFld = $("#userSearch")
+        $syncBtn = $(".refresh").click(refreshUsers)
         $searchBtn = $(".wbdv-search").click(findUserByID)
         $createBtn = $(".wbdv-create").click(createUser)
         $updateBtn = $(".wbdv-update").click(updateUser)
