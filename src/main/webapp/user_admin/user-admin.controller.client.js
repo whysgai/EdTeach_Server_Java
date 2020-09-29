@@ -97,6 +97,7 @@
             .then((_users) => {
                 console.log(_users)
                 users = _users
+                clearFields()
                 renderUsers(users)
             })
     }
@@ -118,6 +119,7 @@
             userService.findAllUsers()
                 .then((_users) => {
                     users = _users
+                    clearFields()
                     renderUsers(users)
                 })
         } else {
@@ -128,6 +130,7 @@
                     $lastNameFld.val() == users[i].lastname) {
                     userService.findUserById(users[i]._id)
                         .then(foundUser => {
+                            clearFields()
                             renderUser(foundUser)
                         })
                 }
@@ -175,7 +178,7 @@
         $passwordFld.val("")
         $firstNameFld.val(selectedUser.firstname)
         $lastNameFld.val(selectedUser.lastname)
-        $roleFld.val(user.role)
+        $roleFld.val(selectedUser.role)
     }
 
     const updateUser = (event) => {
