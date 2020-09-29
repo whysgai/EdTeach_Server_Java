@@ -22,6 +22,10 @@
     display: none;
 }
 
+.header-button {
+    padding: .5rem
+}
+
 .font-black {
     color: black;
 }

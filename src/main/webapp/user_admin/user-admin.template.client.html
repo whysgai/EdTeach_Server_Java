@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link href="../css/styles.css" rel="stylesheet" />
 <!--        <link href="user-admin.style.client.css" rel="stylesheet" />-->
-        <script
-                src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="../services/user.service.client.js"></script>
         <script src="user-admin.controller.client.js"></script>
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,6 +34,9 @@
         <div class="container">
             <h1>User Admin</h1>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="userSearch">
+
+
+
             <table class="table">
                 <thead>
                     <tr>
@@ -43,7 +46,13 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Role</th>
-                        <th>&nbsp;</th>
+                        <th class="header-button">
+                            <button class="btn btn-primary my-2 my-sm-0 col-12" type="submit">
+                                <span>Sync</span>
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                            </button>
+                        </th>
+<!--                        <th>&nbsp;</th>-->
                     </tr>
                     <tr class="wbdv-form">
                         <td><input id="usernameFld" class="form-control"
