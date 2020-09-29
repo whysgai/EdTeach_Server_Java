@@ -4,22 +4,25 @@
 (function () {
     let users = [
         {
-            userid: '0000001',
+            _id: '0000001',
             username: 'wonder',
+            email: 'dprince@jla.org',
             firstname: 'Diana',
             lastname: 'Prince',
             role: 'Faculty'
         },
         {
-            userid: '0000002',
+            _id: '0000002',
             username: 'super',
+            email: 'ckent@dailyplent.com',
             firstname: 'Clark',
             lastname: 'Kent',
             role: 'Faculty'
         },
         {
-            userid: '0000003',
+            _id: '0000003',
             username: 'bat',
+            email: 'bwayne@batcave.net',
             firstname: 'Bruce',
             lastname: 'Wayne',
             role: 'Faculty'
