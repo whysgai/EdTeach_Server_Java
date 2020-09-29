@@ -1,3 +1,6 @@
+// import * as User from '../models/user.model.client'
+
+
 (function () {
     let users = [
         {
@@ -104,8 +107,8 @@
                 }
             }
         }
-
     }
+
 
     const generateID = () => {
         const prefix = new Date().getFullYear()
@@ -178,8 +181,6 @@
         $firstNameFld.val("")
         $lastNameFld.val("")
         $roleFld.val("")
-
-
     }
 
     const init = () => {
