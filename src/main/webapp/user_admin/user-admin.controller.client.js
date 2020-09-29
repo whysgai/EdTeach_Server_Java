@@ -32,7 +32,7 @@
     // Use $ in variable naming to indicate presence in DOM
     let $tbody, $template
     let $createBtn, $updateBtn, $searchBtn
-    let $usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $roleFld
+    let $usernameFld, $passwordFld, $emailFld, $firstNameFld, $lastNameFld, $roleFld
 
     const userService = new AdminUserServiceClient()
 
@@ -48,6 +48,7 @@
         // swap wbdv-hidden for hide class
         clone.removeClass("wbdv-hidden")
         clone.find(".wbdv-username").html(user.username)
+        clone.find(".wbdv-email").html(user.email)
         clone.find(".wbdv-first-name").html(user.firstname)
         clone.find(".wbdv-last-name").html(user.lastname)
         clone.find(".wbdv-role").html(user.role)
@@ -66,6 +67,7 @@
             // swap wbdv-hidden for hide class
             clone.removeClass("wbdv-hidden")
             clone.find(".wbdv-username").html(user.username)
+            clone.find(".wbdv-email").html(user.email)
             clone.find(".wbdv-first-name").html(user.firstname)
             clone.find(".wbdv-last-name").html(user.lastname)
             clone.find(".wbdv-role").html(user.role)
@@ -98,6 +100,7 @@
         } else {
             for (let i = 0; i < users.length; i++) {
                 if ($usernameFld.val() == users[i].username ||
+                    $emailFld.val() == users[i].email ||
                     $firstNameFld.val() == users[i].firstname ||
                     $lastNameFld.val() == users[i].lastname) {
                     userService.findUserById(users[i]._id)
@@ -119,12 +122,14 @@
 
     const createUser = () => {
         const username = $usernameFld.val()
+        const email = $emailFld.val()
         const firstname = $firstNameFld.val()
         const lastname = $lastNameFld.val()
         const role = $roleFld.val()
 
         // Can use same field for read/write depending on passed args
         $usernameFld.val("")
+        $emailFld.val("")
         $passwordFld.val("")
         $firstNameFld.val("")
         $lastNameFld.val("")
@@ -132,6 +137,8 @@
 
         const newUser = {
             username: username,
+            email: email,
+            password: 'PLACEHOLDER',
             firstname: firstname,
             lastname: lastname,
             role: role
@@ -147,6 +154,7 @@
     const editUser = (index) => {
         selectedUser = users[index]
         $usernameFld.val(selectedUser.username)
+        $emailFld.val(selectedUser.email)
         $passwordFld.val("")
         $firstNameFld.val(selectedUser.firstname)
         $lastNameFld.val(selectedUser.lastname)
@@ -155,6 +163,7 @@
 
     const updateUser = (event) => {
         const updateUsername = $usernameFld.val()
+        const updateEmail = $emailFld.val()
         // const password = $passwordFld.val()
         const updateFirstName = $firstNameFld.val()
         const updateLastName = $lastNameFld.val()
@@ -163,12 +172,14 @@
 
         userService.updateUser(userID, {
             username: updateUsername,
+            email: updateEmail,
             firstname: updateFirstName,
             lastname: updateLastName,
             role: updateRole
         })
             .then(response => {
                 selectedUser.username = updateUsername
+                selectedUser.email = updateEmail
                 selectedUser.firstname = updateFirstName
                 selectedUser.lastname = updateLastName
                 selectedUser.role = updateRole
@@ -177,6 +188,7 @@
 
         // Can use same field for read/write depending on passed args
         $usernameFld.val("")
+        $emailFld.val("")
         $passwordFld.val("")
         $firstNameFld.val("")
         $lastNameFld.val("")
@@ -191,6 +203,7 @@
         $createBtn = $(".wbdv-create").click(createUser)
         $updateBtn = $(".wbdv-update").click(updateUser)
         $usernameFld = $("#usernameFld")
+        $emailFld = $("#emailFld")
         $passwordFld = $("#passwordFld")
         $firstNameFld = $("#firstNameFld")
         $lastNameFld = $("#lastNameFld")
