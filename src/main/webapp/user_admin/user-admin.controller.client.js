@@ -218,6 +218,13 @@
                 users = _users
                 renderUsers(users)
             })
+
+        $("#searchInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tableIdentifier tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     }
     $(init)
 
