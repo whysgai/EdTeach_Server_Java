@@ -1,8 +1,6 @@
-// import * as User from '../models/user.model.client'
-
 
 (function () {
-    let users = [
+    let localUsers = [
         {
             _id: '0000001',
             username: 'wonder',

@@ -11,7 +11,7 @@ function User(username, password, firstName, lastName, role) {
     this.getUsername = getUsername;
     // ...same for rest of properties…
 
-    export function testFunc() {
+    function testFunc() {
         console.log("testFunc is workin'!")
     }
     function setUsername(username) {
