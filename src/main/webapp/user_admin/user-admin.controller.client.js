@@ -219,9 +219,9 @@
                 renderUsers(users)
             })
 
-        $("#searchInput").on("keyup", function() {
+        $("#userSearch").on("keyup", function() {
             var value = $(this).val().toLowerCase();
-            $("#tableIdentifier tr").filter(function() {
+            $(".wbdv-tbody tr").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
