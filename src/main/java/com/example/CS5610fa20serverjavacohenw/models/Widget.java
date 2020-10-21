@@ -1,23 +1,24 @@
 package com.example.CS5610fa20serverjavacohenw.models;
 
 public class Widget {
-    private Integer id;
+    private String id;
     private String name;
     private String type;
 
-    public Widget() {}
 
-    public Widget(Integer id, String name, String type) {
+    public Widget(String id, String name, String type) {
         this.id = id;
         this.name = name;
         this.type = type;
     }
 
-    public Integer getId() {
+    public Widget() {}
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
