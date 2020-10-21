@@ -22,10 +22,11 @@ public class WidgetController {
     }
 
     public Widget findWidgetById(Integer widgetId) {
-        for (Widget widget: widgets)
+        for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 return widget;
             }
+        }
         return null;
     }
 
@@ -36,18 +37,20 @@ public class WidgetController {
     }
 
     public void deleteWidget(Integer widgetId) {
-        for (Widget widget: widgets)
+        for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 widgets.remove(widget);
             }
+        }
     }
 
     public Widget updateWidget(Widget deltaWidget) {
-        for (Widget widget: widgets)
+        for (Widget widget: widgets) {
             if (widget.getId().equals(deltaWidget.getId())) {
                 widget = deltaWidget;
                 return widget;
             }
+        }
         return null;
     }
 }
