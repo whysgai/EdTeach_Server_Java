@@ -1,12 +1,16 @@
 package com.example.CS5610fa20serverjavacohenw.controllers;
 
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+// Java annotation to add specialized behavior -- in this case RESTful "powers"
+@RestController
 public class WidgetController {
+
     // Temporary hard-coded data
     List<Widget> widgets = new ArrayList<Widget>();
     {
@@ -15,13 +19,16 @@ public class WidgetController {
         widgets.add(new Widget("003", "Widget3", "PARAGRAPH"));
     }
 
+    public String sayHello() {
+        return "Hello World!";
+    }
 
     // CRUD operations
     public List<Widget> findAllWidgets() {
         return widgets;
     }
 
-    public Widget findWidgetById(Integer widgetId) {
+    public Widget findWidgetById(String widgetId) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 return widget;
@@ -36,12 +43,8 @@ public class WidgetController {
         return widget;
     }
 
-    public void deleteWidget(Integer widgetId) {
-        for (Widget widget: widgets) {
-            if (widget.getId().equals(widgetId)) {
-                widgets.remove(widget);
-            }
-        }
+    public void deleteWidget(String widgetId) {
+        widgets.removeIf(widget -> widget.getId().equals(widgetId));
     }
 
     public Widget updateWidget(Widget deltaWidget) {
