@@ -1,9 +1,7 @@
 package com.example.CS5610fa20serverjavacohenw.controllers;
 
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,12 +25,12 @@ public class WidgetController {
 //    }
 
     // CRUD operations
-    @GetMapping("/find/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return widgets;
     }
 
-    @GetMapping("find/widgets/{wid}")
+    @GetMapping("/api/widgets/{wid}")
     public Widget findWidgetById(
             @PathVariable("wid") String widgetId) {
         for (Widget widget: widgets) {
@@ -43,16 +41,16 @@ public class WidgetController {
         return null;
     }
 
-    public Widget createWidget(Widget widget) {
+    @PostMapping("/api/widgets")
+    public Widget createWidget(
+            @RequestBody Widget widget) {
         widget.setId((new Date()).toString());
         widgets.add(widget);
         return widget;
     }
 
-    public void deleteWidget(String widgetId) {
-        widgets.removeIf(widget -> widget.getId().equals(widgetId));
-    }
 
+    @PutMapping("/api/widgets/{wid}")
     public Widget updateWidget(Widget deltaWidget) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(deltaWidget.getId())) {
@@ -61,5 +59,9 @@ public class WidgetController {
             }
         }
         return null;
+    }
+
+    public void deleteWidget(String widgetId) {
+        widgets.removeIf(widget -> widget.getId().equals(widgetId));
     }
 }
