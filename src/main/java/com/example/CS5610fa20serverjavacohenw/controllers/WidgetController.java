@@ -49,16 +49,18 @@ public class WidgetController {
         return widget;
     }
 
-
     @PutMapping("/api/widgets/{wid}")
-    public Widget updateWidget(Widget deltaWidget) {
+    public Integer updateWidget(
+            @PathVariable("wid") String widgetId,
+            @RequestBody Widget newWidget) {
         for (Widget widget: widgets) {
-            if (widget.getId().equals(deltaWidget.getId())) {
-                widget = deltaWidget;
-                return widget;
+            if (widget.getId().equals(widgetId)) {
+                widget.setName(newWidget.getName());
+                widget.setType(newWidget.getType());
+                return 1;
             }
         }
-        return null;
+        return 0;
     }
 
     public void deleteWidget(String widgetId) {
