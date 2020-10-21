@@ -1,6 +1,7 @@
 package com.example.CS5610fa20serverjavacohenw.controllers;
 
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class WidgetController {
         widgets.add(new Widget("003", "Widget3", "PARAGRAPH"));
     }
 
+    @GetMapping("/hello") // Tied to GET
     public String sayHello() {
         return "Hello World!";
     }
