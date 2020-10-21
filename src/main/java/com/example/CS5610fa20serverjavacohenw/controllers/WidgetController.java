@@ -3,6 +3,7 @@ package com.example.CS5610fa20serverjavacohenw.controllers;
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class WidgetController {
@@ -17,20 +18,36 @@ public class WidgetController {
 
     // CRUD operations
     public List<Widget> findAllWidgets() {
-        return null;
+        return widgets;
     }
 
     public Widget findWidgetById(Integer widgetId) {
+        for (Widget widget: widgets)
+            if (widget.getId().equals(widgetId)) {
+                return widget;
+            }
         return null;
     }
 
     public Widget createWidget(Widget widget) {
-        return null;
+        widget.setId((new Date()).toString());
+        widgets.add(widget);
+        return widget;
     }
 
-    public void deleteWidget(Integer widgetId) {}
+    public void deleteWidget(Integer widgetId) {
+        for (Widget widget: widgets)
+            if (widget.getId().equals(widgetId)) {
+                widgets.remove(widget);
+            }
+    }
 
-    public Widget updateWidget(Widget widget) {
+    public Widget updateWidget(Widget deltaWidget) {
+        for (Widget widget: widgets)
+            if (widget.getId().equals(deltaWidget.getId())) {
+                widget = deltaWidget;
+                return widget;
+            }
         return null;
     }
 }
