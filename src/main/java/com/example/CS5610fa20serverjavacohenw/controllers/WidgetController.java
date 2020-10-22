@@ -49,6 +49,14 @@ public class WidgetController {
         return widget;
     }
 
+    @PostMapping("/api/topics/{tid}/widgets")
+    public Widget createWidget(
+            @PathVariable("tid") String topicId,
+            @RequestBody Widget newWidget) {
+
+        return newWidget;
+    }
+
     @PutMapping("/api/widgets/{wid}")
     public Integer updateWidget(
             @PathVariable("wid") String widgetId,
