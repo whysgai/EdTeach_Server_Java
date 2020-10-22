@@ -63,7 +63,15 @@ public class WidgetController {
         return 0;
     }
 
-    public void deleteWidget(String widgetId) {
-        widgets.removeIf(widget -> widget.getId().equals(widgetId));
+    @DeleteMapping("/api/widgets/{wid}")
+    public Integer deleteWidget(
+            @PathVariable("wid") String widgetId) {
+        for (Widget widget: widgets) {
+            if (widget.getId().equals(widgetId)) {
+                widgets.remove(widget);
+                return 1;
+            }
+        }
+        return 0;
     }
 }
