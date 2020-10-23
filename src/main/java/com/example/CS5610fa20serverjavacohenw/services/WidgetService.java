@@ -16,11 +16,25 @@ public class WidgetService {
         widgets.add(new Widget("003", "Widget3", "PARAGRAPH"));
     }
 
+    // Helper methods
+//    private List<Widget> sortWidgetsByNumber() {
+//        return widgets;
+//    }
+
     // CRUD operations
     public List<Widget> findAllWidgets() {
         return widgets;
     }
 
+    public List<Widget> findWidgetsForTopic(String topicId) {
+        List<Widget> returnList = new ArrayList<Widget>();
+        for (Widget widget: widgets) {
+            if (widget.getTopicId().equals(topicId)) {
+                returnList.add(widget);
+            }
+        }
+        return returnList;
+    }
 
     public Widget findWidgetById(String widgetId) {
         for (Widget widget: widgets) {
@@ -30,7 +44,6 @@ public class WidgetService {
         }
         return null;
     }
-
 
     public Widget createWidget(Widget widget) {
         widget.setId((new Date()).toString());
@@ -47,7 +60,7 @@ public class WidgetService {
     public Integer updateWidget(String widgetId, Widget newWidget) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
-                widget.setName(newWidget.getName());
+                widget.setTitle(newWidget.getTitle());
                 widget.setType(newWidget.getType());
                 return 1;
             }

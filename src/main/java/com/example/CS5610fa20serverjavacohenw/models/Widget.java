@@ -2,7 +2,8 @@ package com.example.CS5610fa20serverjavacohenw.models;
 
 public class Widget {
     private String id;
-    private String name;
+    private String topicId;
+    private String title;
     private String type;
     private Integer widgetOrder;
     private String text;
@@ -12,9 +13,10 @@ public class Widget {
     private String style;
     private String value;
 
-    public Widget(String id, String name, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value) {
+    public Widget(String id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value) {
         this.id = id;
-        this.name = name;
+        this.topicId = topicId;
+        this.title = title;
         this.type = type;
         this.widgetOrder = widgetOrder;
         this.text = text;
@@ -25,9 +27,9 @@ public class Widget {
         this.value = value;
     }
 
-    public Widget(String id, String name, String type) {
+    public Widget(String id, String title, String type) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.type = type;
     }
 
@@ -41,12 +43,12 @@ public class Widget {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getType() {
@@ -56,7 +58,6 @@ public class Widget {
     public void setType(String type) {
         this.type = type;
     }
-
 
     public Integer getWidgetOrder() {
         return widgetOrder;
@@ -112,6 +113,15 @@ public class Widget {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
 
