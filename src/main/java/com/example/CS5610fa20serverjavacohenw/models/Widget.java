@@ -1,7 +1,7 @@
 package com.example.CS5610fa20serverjavacohenw.models;
 
 public class Widget {
-    private String id;
+    private String _id;
     private String topicId;
     private String title;
     private String type;
@@ -14,7 +14,7 @@ public class Widget {
     private String value;
 
     public Widget(String id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value) {
-        this.id = id;
+        this._id = id;
         this.topicId = topicId;
         this.title = title;
         this.type = type;
@@ -28,7 +28,7 @@ public class Widget {
     }
 
     public Widget(String id, String topicId, String title, String type, Integer widgetOrder) {
-        this.id = id;
+        this._id = id;
         this.topicId = topicId;
         this.title = title;
         this.type = type;
@@ -36,7 +36,7 @@ public class Widget {
     }
 
     public Widget(String id, String title, String type) {
-        this.id = id;
+        this._id = id;
         this.title = title;
         this.type = type;
     }
@@ -44,11 +44,11 @@ public class Widget {
     public Widget() {}
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getTitle() {
@@ -122,7 +122,6 @@ public class Widget {
     public void setValue(String value) {
         this.value = value;
     }
-
 
     public String getTopicId() {
         return topicId;
