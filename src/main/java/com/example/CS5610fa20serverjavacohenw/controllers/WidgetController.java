@@ -38,11 +38,10 @@ public class WidgetController {
         return service.createWidget(newWidget);
     }
 
-    @PostMapping("/api/topics/{tid}/widgets")
+    @PostMapping("/api/topics/{topicId}/widgets")
     public Widget createWidget(
-            @PathVariable("tid") String topicId,
+            @PathVariable("topicId") String topicId,
             @RequestBody Widget newWidget) {
-
         return service.createWidget(topicId, newWidget);
     }
 

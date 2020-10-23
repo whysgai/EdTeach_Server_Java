@@ -52,9 +52,11 @@ public class WidgetService {
     }
 
 
-    public Widget createWidget(String topicId, Widget newWidget) {
-
-        return newWidget;
+    public Widget createWidget(String topicId, Widget widget) {
+        widget.setId((new Date()).toString());
+        widget.setTopicId(topicId);
+        widgets.add(widget);
+        return widget;
     }
 
     public Integer updateWidget(String widgetId, Widget newWidget) {
