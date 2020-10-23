@@ -27,6 +27,14 @@ public class Widget {
         this.value = value;
     }
 
+    public Widget(String id, String topicId, String title, String type, Integer widgetOrder) {
+        this.id = id;
+        this.topicId = topicId;
+        this.title = title;
+        this.type = type;
+        this.widgetOrder = widgetOrder;
+    }
+
     public Widget(String id, String title, String type) {
         this.id = id;
         this.title = title;

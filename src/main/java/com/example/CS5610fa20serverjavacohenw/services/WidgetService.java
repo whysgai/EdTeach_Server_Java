@@ -11,13 +11,13 @@ public class WidgetService {
     // Temporary hard-coded data
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        widgets.add(new Widget("001", "Widget1", "HEADING"));
-        widgets.add(new Widget("002", "Widget2", "PARAGRAPH"));
-        widgets.add(new Widget("003", "Widget3", "PARAGRAPH"));
+        widgets.add(new Widget("001", "topic1", "Widget1", "HEADING", 1));
+        widgets.add(new Widget("002", "topic1", "Widget2", "PARAGRAPH", 2));
+        widgets.add(new Widget("003", "topic2", "Widget3", "PARAGRAPH", 1));
     }
 
     // Helper methods
-//    private List<Widget> sortWidgetsByNumber() {
+//    private List<Widget> sortWidgetsByOrder() {
 //        return widgets;
 //    }
 
