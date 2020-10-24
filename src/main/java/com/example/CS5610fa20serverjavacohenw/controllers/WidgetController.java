@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetController {
-
     WidgetService service = new WidgetService();
 
     // CRUD operations
@@ -21,7 +20,7 @@ public class WidgetController {
         return service.findAllWidgets();
     }
 
-    @GetMapping("/api/widgets/{topicId}/widgets")
+    @GetMapping("/api/topics/{topicId}/widgets")
     public List<Widget> findWidgetsForTopic(
             @PathVariable("topicId") String topicId) {
         return service.findWidgetsForTopic(topicId);
