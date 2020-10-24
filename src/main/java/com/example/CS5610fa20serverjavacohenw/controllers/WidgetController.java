@@ -10,6 +10,7 @@ import java.util.List;
 
 // Java annotation to add specialized behavior -- in this case RESTful "powers"
 @RestController
+@CrossOrigin(origins = "*")
 public class WidgetController {
 
     WidgetService service = new WidgetService();
