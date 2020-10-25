@@ -81,7 +81,7 @@ public class WidgetService {
         return 0;
     }
 
-    // O 2n^2
+    // O 2n + 2n^2
     // Also concurrent modification
     public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
         List<Widget> topicWidgets = findWidgetsForTopic(topicId);
