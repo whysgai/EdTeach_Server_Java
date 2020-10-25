@@ -59,28 +59,56 @@ public class WidgetService {
         return widget;
     }
 
+    private void updateHelper(Widget oldWidget, Widget newWidget) {
+        oldWidget.setTitle(newWidget.getTitle());
+        oldWidget.setType(newWidget.getType());
+        oldWidget.setWidgetOrder(newWidget.getWidgetOrder());
+        oldWidget.setText(newWidget.getText());
+        oldWidget.setUrl(newWidget.getUrl());
+        oldWidget.setCssClass(newWidget.getCssClass());
+        oldWidget.setStyle(newWidget.getStyle());
+        oldWidget.setValue(newWidget.getValue());
+        oldWidget.setHeading(newWidget.getHeading());
+    }
+
     public Integer updateWidget(String widgetId, Widget newWidget) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
-                widget.setTitle(newWidget.getTitle());
-                widget.setType(newWidget.getType());
-                widget.setWidgetOrder(newWidget.getWidgetOrder());
-                widget.setText(newWidget.getText());
-                widget.setUrl(newWidget.getUrl());
-                widget.setCssClass(newWidget.getCssClass());
-                widget.setStyle(newWidget.getStyle());
-                widget.setValue(newWidget.getValue());
-                widget.setHeading(newWidget.getHeading());
+                updateHelper(widget, newWidget);
                 return 1;
             }
         }
         return 0;
     }
 
-//    public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> widgets) {
-//        this.widgets = widgets;
-//        return
-//    }
+    // O 2n^2
+    // Also concurrent modification
+    public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
+        List<Widget> topicWidgets = findWidgetsForTopic(topicId);
+        for (Widget widgetServer: topicWidgets) {
+            boolean update = false;
+            for (Widget widgetClient: updateWidgets) {
+                // update
+                if (widgetServer.getId().equals(widgetClient.getId())) {
+                    updateHelper(widgetServer, widgetClient);
+                    update = true;
+                }
+            }
+            // this server widget was never found, so delete
+            widgets.remove(widgetServer);
+        }
+        for (Widget widgetClient: updateWidgets) {
+            boolean match = false;
+            for (Widget widgetServer: topicWidgets) {
+                if (widgetServer.getId().equals(widgetClient.getId())) {
+                    match = true;
+                }
+            }
+            // the client widget was never found, so add
+            createWidget(topicId, widgetClient);
+        }
+        return findWidgetsForTopic(topicId);
+    }
 
      public Integer deleteWidget(String widgetId) {
         for (Widget widget: widgets) {
