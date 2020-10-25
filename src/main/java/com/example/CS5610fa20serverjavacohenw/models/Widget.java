@@ -12,8 +12,9 @@ public class Widget {
     private String cssClass;
     private String style;
     private String value;
+    private String heading;
 
-    public Widget(String id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value) {
+    public Widget(String id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value, String heading) {
         this._id = id;
         this.topicId = topicId;
         this.title = title;
@@ -25,6 +26,7 @@ public class Widget {
         this.cssClass = cssClass;
         this.style = style;
         this.value = value;
+        this.heading = heading;
     }
 
     public Widget(String id, String topicId, String title, String type, Integer widgetOrder) {
@@ -131,6 +133,9 @@ public class Widget {
         this.topicId = topicId;
     }
 
+    public String getHeading() { return heading; }
+
+    public void setHeading(String heading) { this.heading = heading; }
 
 
 }
