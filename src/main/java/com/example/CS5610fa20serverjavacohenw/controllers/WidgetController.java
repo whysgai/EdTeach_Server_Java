@@ -45,6 +45,13 @@ public class WidgetController {
         return service.createWidget(topicId, newWidget);
     }
 
+//    @PutMapping("/api/topics/{topicId}/widgets")
+//    public Widget updateWidgetsForTopic(
+//            @PathVariable("topicId") String topicId,
+//            @RequestBody List<Widget> widgets) {
+//        return service.updateWidgetsForTopic(topicId, widgets);
+//    }
+
     @PutMapping("/api/widgets/{wid}")
     public Integer updateWidget(
             @PathVariable("wid") String widgetId,

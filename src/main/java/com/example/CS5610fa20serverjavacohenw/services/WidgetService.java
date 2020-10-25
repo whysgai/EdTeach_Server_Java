@@ -77,6 +77,11 @@ public class WidgetService {
         return 0;
     }
 
+//    public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> widgets) {
+//        this.widgets = widgets;
+//        return
+//    }
+
      public Integer deleteWidget(String widgetId) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
