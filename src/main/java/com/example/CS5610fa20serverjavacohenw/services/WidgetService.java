@@ -64,6 +64,13 @@ public class WidgetService {
             if (widget.getId().equals(widgetId)) {
                 widget.setTitle(newWidget.getTitle());
                 widget.setType(newWidget.getType());
+                widget.setWidgetOrder(newWidget.getWidgetOrder());
+                widget.setText(newWidget.getText());
+                widget.setUrl(newWidget.getUrl());
+                widget.setCssClass(newWidget.getCssClass());
+                widget.setStyle(newWidget.getStyle());
+                widget.setValue(newWidget.getValue());
+                widget.setHeading(newWidget.getHeading());
                 return 1;
             }
         }
