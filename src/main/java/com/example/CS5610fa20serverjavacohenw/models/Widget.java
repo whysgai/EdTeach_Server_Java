@@ -136,6 +136,4 @@ public class Widget {
     public String getHeading() { return heading; }
 
     public void setHeading(String heading) { this.heading = heading; }
-
-
 }

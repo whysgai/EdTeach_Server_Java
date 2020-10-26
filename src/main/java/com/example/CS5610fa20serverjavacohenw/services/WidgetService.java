@@ -95,17 +95,28 @@ public class WidgetService {
                 }
             }
             // this server widget was never found, so delete
-            widgets.remove(widgetServer);
+            if (update == false) {
+                widgets.remove(widgetServer);
+            }
         }
         for (Widget widgetClient: updateWidgets) {
             boolean match = false;
+            System.out.println("Check for ID match: ");
+            System.out.println(widgetClient.getId());
             for (Widget widgetServer: topicWidgets) {
+                System.out.println("...against...");
+                System.out.println(widgetServer.getId());
                 if (widgetServer.getId().equals(widgetClient.getId())) {
+                    System.out.println("Match!");
                     match = true;
+                    break;
                 }
             }
             // the client widget was never found, so add
-            createWidget(topicId, widgetClient);
+            if (match == false) {
+                System.out.println("No match, creating new in server");
+                createWidget(topicId, widgetClient);
+            }
         }
         return findWidgetsForTopic(topicId);
     }
