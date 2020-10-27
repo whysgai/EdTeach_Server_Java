@@ -13,13 +13,9 @@ public class WidgetService {
     {
         widgets.add(new Widget("001", "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
         widgets.add(new Widget("002", "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
-        widgets.add(new Widget("003", "topic2", "Widget3", "PARAGRAPH", 0));
+        widgets.add(new Widget("003", "5f8a045dba6bf60017a5023c", "Widget3", "PARAGRAPH", 2));
+        widgets.add(new Widget("004", "topic2", "Widget3", "HEADING", 0));
     }
-
-    // Helper methods
-//    private List<Widget> sortWidgetsByOrder() {
-//        return widgets;
-//    }
 
     // CRUD operations
     public List<Widget> findAllWidgets() {
@@ -81,43 +77,46 @@ public class WidgetService {
         return 0;
     }
 
-    // O 2n + 2n^2
-    // Also concurrent modification
+    // O 2n + 2n^2 This isn't great, but I cannot think of a way to simplify it.
+    // Also concurrent modification, should use iterators instead of for: each
     public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
+        // Narrow list down to widgets for this topic
+        // Normally decreasing N isn't the important part, but in this case I think it helps
         List<Widget> topicWidgets = findWidgetsForTopic(topicId);
+        // For each widget on the server...
         for (Widget widgetServer: topicWidgets) {
             boolean update = false;
+            // ... check against widgets from the client...
             for (Widget widgetClient: updateWidgets) {
-                // update
+                // ... and if they match, update them
                 if (widgetServer.getId().equals(widgetClient.getId())) {
                     updateHelper(widgetServer, widgetClient);
                     update = true;
                 }
             }
-            // this server widget was never found, so delete
-            if (update == false) {
+            // If this server-side widget was not matched, it no longer exists on the client
+            if (!update) {
                 widgets.remove(widgetServer);
             }
         }
+        // Now, for each widget from the client...
         for (Widget widgetClient: updateWidgets) {
             boolean match = false;
-            System.out.println("Check for ID match: ");
             System.out.println(widgetClient.getId());
+            // ... check it against the widgets on the server ...
             for (Widget widgetServer: topicWidgets) {
-                System.out.println("...against...");
-                System.out.println(widgetServer.getId());
+                // ... and if they match, mark it ...
                 if (widgetServer.getId().equals(widgetClient.getId())) {
-                    System.out.println("Match!");
                     match = true;
                     break;
                 }
             }
-            // the client widget was never found, so add
-            if (match == false) {
-                System.out.println("No match, creating new in server");
+            // ... so that unmatched widgets can be added.
+            if (!match) {
                 createWidget(topicId, widgetClient);
             }
         }
+        // Return the updated list of server-side widgets
         return findWidgetsForTopic(topicId);
     }
 
