@@ -11,9 +11,9 @@ public class WidgetService {
     // Temporary hard-coded data
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        widgets.add(new Widget("001", "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 1));
-        widgets.add(new Widget("002", "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 2));
-        widgets.add(new Widget("003", "topic2", "Widget3", "PARAGRAPH", 1));
+        widgets.add(new Widget("001", "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
+        widgets.add(new Widget("002", "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
+        widgets.add(new Widget("003", "topic2", "Widget3", "PARAGRAPH", 0));
     }
 
     // Helper methods
