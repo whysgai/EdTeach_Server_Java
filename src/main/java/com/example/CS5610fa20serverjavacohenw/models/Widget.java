@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Widget {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
     private String topicId;
     private String title;
     private String type;
@@ -20,7 +20,7 @@ public class Widget {
     private String value;
     private String heading;
 
-    public Widget(String id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value, String heading) {
+    public Widget(Integer id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value, String heading) {
         this.id = id;
         this.topicId = topicId;
         this.title = title;
@@ -35,7 +35,7 @@ public class Widget {
         this.heading = heading;
     }
 
-    public Widget(String id, String topicId, String title, String type, Integer widgetOrder) {
+    public Widget(Integer id, String topicId, String title, String type, Integer widgetOrder) {
         this.id = id;
         this.topicId = topicId;
         this.title = title;
@@ -43,7 +43,7 @@ public class Widget {
         this.widgetOrder = widgetOrder;
     }
 
-    public Widget(String id, String title, String type) {
+    public Widget(Integer id, String title, String type) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -51,11 +51,11 @@ public class Widget {
 
     public Widget() {}
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

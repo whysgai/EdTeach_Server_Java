@@ -11,10 +11,10 @@ public class WidgetService {
     // Temporary hard-coded data
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        widgets.add(new Widget("001", "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
-        widgets.add(new Widget("002", "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
-        widgets.add(new Widget("003", "5f8a045dba6bf60017a5023c", "Widget3", "PARAGRAPH", 2));
-        widgets.add(new Widget("004", "topic2", "Widget3", "HEADING", 0));
+        widgets.add(new Widget(001, "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
+        widgets.add(new Widget(002, "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
+        widgets.add(new Widget(003, "5f8a045dba6bf60017a5023c", "Widget3", "PARAGRAPH", 2));
+        widgets.add(new Widget(004, "topic2", "Widget3", "HEADING", 0));
     }
 
     // CRUD operations
@@ -32,7 +32,7 @@ public class WidgetService {
         return returnList;
     }
 
-    public Widget findWidgetById(String widgetId) {
+    public Widget findWidgetById(Integer widgetId) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 return widget;
@@ -42,14 +42,19 @@ public class WidgetService {
     }
 
     public Widget createWidget(Widget widget) {
-        widget.setId((new Date()).toString());
+//        All this to get the current time in ms from a long primitive to an Integer object
+//        Date date = new Date();
+//        long time = date.getTime();
+//        Long timeLong = Long.valueOf(time);
+//        Integer intTime = timeLong.intValue();
+        widget.setId(Long.valueOf(new Date().getTime()).intValue());
         widgets.add(widget);
         return widget;
     }
 
 
     public Widget createWidget(String topicId, Widget widget) {
-        widget.setId((new Date()).toString());
+        widget.setId(Long.valueOf(new Date().getTime()).intValue());
         widget.setTopicId(topicId);
         widgets.add(widget);
         return widget;
@@ -67,7 +72,7 @@ public class WidgetService {
         oldWidget.setHeading(newWidget.getHeading());
     }
 
-    public Integer updateWidget(String widgetId, Widget newWidget) {
+    public Integer updateWidget(Integer widgetId, Widget newWidget) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 updateHelper(widget, newWidget);
@@ -120,7 +125,7 @@ public class WidgetService {
         return findWidgetsForTopic(topicId);
     }
 
-     public Integer deleteWidget(String widgetId) {
+     public Integer deleteWidget(Integer widgetId) {
         for (Widget widget: widgets) {
             if (widget.getId().equals(widgetId)) {
                 widgets.remove(widget);
