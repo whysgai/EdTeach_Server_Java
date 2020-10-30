@@ -1,6 +1,12 @@
 package com.example.CS5610fa20serverjavacohenw.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String topicId;
     private String title;
