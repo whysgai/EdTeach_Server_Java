@@ -30,7 +30,7 @@ public class WidgetService {
     }
 
     public List<Widget> findWidgetsForTopic(String topicId) {
-        return (List<Widget>) widgetRepository.findWidgetsForTopic(topicId);
+        return widgetRepository.findWidgetsForTopic(topicId);
 //        List<Widget> returnList = new ArrayList<Widget>();
 //        for (Widget widget: widgets) {
 //            if (widget.getTopicId().equals(topicId)) {
@@ -70,26 +70,29 @@ public class WidgetService {
         return widget;
     }
 
-    private void updateHelper(Widget oldWidget, Widget newWidget) {
-        oldWidget.setTitle(newWidget.getTitle());
-        oldWidget.setType(newWidget.getType());
-        oldWidget.setWidgetOrder(newWidget.getWidgetOrder());
-        oldWidget.setText(newWidget.getText());
-        oldWidget.setUrl(newWidget.getUrl());
-        oldWidget.setCssClass(newWidget.getCssClass());
-        oldWidget.setStyle(newWidget.getStyle());
-        oldWidget.setValue(newWidget.getValue());
-        oldWidget.setHeading(newWidget.getHeading());
+    private void updateHelper(Widget oldWidget, Widget deltaWidget) {
+        oldWidget.setTitle(deltaWidget.getTitle());
+        oldWidget.setType(deltaWidget.getType());
+        oldWidget.setWidgetOrder(deltaWidget.getWidgetOrder());
+        oldWidget.setText(deltaWidget.getText());
+        oldWidget.setUrl(deltaWidget.getUrl());
+        oldWidget.setCssClass(deltaWidget.getCssClass());
+        oldWidget.setStyle(deltaWidget.getStyle());
+        oldWidget.setValue(deltaWidget.getValue());
+        oldWidget.setHeading(deltaWidget.getHeading());
     }
 
-    public Integer updateWidget(Integer widgetId, Widget newWidget) {
-        for (Widget widget: widgets) {
-            if (widget.getId().equals(widgetId)) {
-                updateHelper(widget, newWidget);
-                return 1;
-            }
-        }
-        return 0;
+    public Integer updateWidget(Integer widgetId, Widget deltaWidget) {
+        Widget oldWidget = widgetRepository.findById(widgetId).get();
+        updateHelper(oldWidget, deltaWidget);
+        widgetRepository.save(oldWidget);
+//        for (Widget widget: widgets) {
+//            if (widget.getId().equals(widgetId)) {
+//                updateHelper(widget, deltaWidget);
+//                return 1;
+//            }
+//        }
+        return 1;
     }
 
     // O 2n + 2n^2 This isn't great, but I cannot think of a way to simplify it.

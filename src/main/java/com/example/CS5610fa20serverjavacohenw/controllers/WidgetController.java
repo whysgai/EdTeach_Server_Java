@@ -60,8 +60,8 @@ public class WidgetController {
     @PutMapping("/api/widgets/{widgetId}")
     public Integer updateWidget(
             @PathVariable("widgetId") Integer widgetId,
-            @RequestBody Widget newWidget) {
-        return service.updateWidget(widgetId, newWidget);
+            @RequestBody Widget deltaWidget) {
+        return service.updateWidget(widgetId, deltaWidget);
     }
 
     @DeleteMapping("/api/widgets/{widgetId}")
