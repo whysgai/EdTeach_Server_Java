@@ -95,6 +95,17 @@ public class WidgetService {
         return 1;
     }
 
+    public Integer deleteWidget(Integer widgetId) {
+        widgetRepository.deleteById(widgetId);
+//        for (Widget widget: widgets) {
+//            if (widget.getId().equals(widgetId)) {
+//                widgets.remove(widget);
+//                return 1;
+//            }
+//        }
+        return 0;
+    }
+
     // O 2n + 2n^2 This isn't great, but I cannot think of a way to simplify it.
     // Also concurrent modification, should use iterators instead of for: each
     public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
@@ -138,14 +149,5 @@ public class WidgetService {
         return findWidgetsForTopic(topicId);
     }
 
-     public Integer deleteWidget(Integer widgetId) {
-        widgetRepository.deleteById(widgetId);
-//        for (Widget widget: widgets) {
-//            if (widget.getId().equals(widgetId)) {
-//                widgets.remove(widget);
-//                return 1;
-//            }
-//        }
-        return 0;
-    }
+
 }
