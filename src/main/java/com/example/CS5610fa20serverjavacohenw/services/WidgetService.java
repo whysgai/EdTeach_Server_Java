@@ -109,6 +109,7 @@ public class WidgetService {
     // O 2n + 2n^2 This isn't great, but I cannot think of a way to simplify it.
     // Also concurrent modification, should use iterators instead of for: each
     public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
+
         // Narrow list down to widgets for this topic
         // Normally decreasing N isn't the important part, but in this case I think it helps
         List<Widget> topicWidgets = findWidgetsForTopic(topicId);
@@ -120,12 +121,13 @@ public class WidgetService {
                 // ... and if they match, update them
                 if (widgetServer.getId().equals(widgetClient.getId())) {
                     updateHelper(widgetServer, widgetClient);
+                    widgetRepository.save(widgetServer);
                     update = true;
                 }
             }
             // If this server-side widget was not matched, it no longer exists on the client
             if (!update) {
-                widgets.remove(widgetServer);
+                widgetRepository.deleteById(widgetServer.getId());
             }
         }
         // Now, for each widget from the client...
