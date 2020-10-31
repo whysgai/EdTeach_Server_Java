@@ -1,12 +1,19 @@
 package com.example.CS5610fa20serverjavacohenw.services;
 
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
+import com.example.CS5610fa20serverjavacohenw.repositories.WidgetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class WidgetService {
+
+    @Autowired
+    WidgetRepository widgetRepository;
 
     // Temporary hard-coded data
     List<Widget> widgets = new ArrayList<Widget>();
@@ -19,26 +26,28 @@ public class WidgetService {
 
     // CRUD operations
     public List<Widget> findAllWidgets() {
-        return widgets;
+        return (List<Widget>) widgetRepository.findAll();
     }
 
     public List<Widget> findWidgetsForTopic(String topicId) {
-        List<Widget> returnList = new ArrayList<Widget>();
-        for (Widget widget: widgets) {
-            if (widget.getTopicId().equals(topicId)) {
-                returnList.add(widget);
-            }
-        }
-        return returnList;
+        return (List<Widget>) widgetRepository.findAll();
+//        List<Widget> returnList = new ArrayList<Widget>();
+//        for (Widget widget: widgets) {
+//            if (widget.getTopicId().equals(topicId)) {
+//                returnList.add(widget);
+//            }
+//        }
+//        return returnList;
     }
 
     public Widget findWidgetById(Integer widgetId) {
-        for (Widget widget: widgets) {
-            if (widget.getId().equals(widgetId)) {
-                return widget;
-            }
-        }
-        return null;
+        return widgetRepository.findById(widgetId).get();
+//        for (Widget widget: widgets) {
+//            if (widget.getId().equals(widgetId)) {
+//                return widget;
+//            }
+//        }
+//        return null;
     }
 
     public Widget createWidget(Widget widget) {

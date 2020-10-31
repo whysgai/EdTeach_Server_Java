@@ -2,6 +2,7 @@ package com.example.CS5610fa20serverjavacohenw.controllers;
 
 import com.example.CS5610fa20serverjavacohenw.models.Widget;
 import com.example.CS5610fa20serverjavacohenw.services.WidgetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +13,9 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetController {
-    WidgetService service = new WidgetService();
+
+    @Autowired
+    WidgetService service;// = new WidgetService();
 
     // CRUD operations
     @GetMapping("/api/widgets")
