@@ -51,14 +51,15 @@ public class WidgetService {
     }
 
     public Widget createWidget(Widget widget) {
+        return widgetRepository.save(widget);
 //        All this to get the current time in ms from a long primitive to an Integer object
 //        Date date = new Date();
 //        long time = date.getTime();
 //        Long timeLong = Long.valueOf(time);
 //        Integer intTime = timeLong.intValue();
-        widget.setId(Long.valueOf(new Date().getTime()).intValue());
-        widgets.add(widget);
-        return widget;
+//        widget.setId(Long.valueOf(new Date().getTime()).intValue());
+//        widgets.add(widget);
+//        return widget;
     }
 
 
