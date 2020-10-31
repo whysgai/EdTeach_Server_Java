@@ -57,16 +57,16 @@ public class WidgetController {
         return service.updateWidgetsForTopic(topicId, widgets);
     }
 
-    @PutMapping("/api/widgets/{wid}")
+    @PutMapping("/api/widgets/{widgetId}")
     public Integer updateWidget(
-            @PathVariable("wid") Integer widgetId,
+            @PathVariable("widgetId") Integer widgetId,
             @RequestBody Widget newWidget) {
         return service.updateWidget(widgetId, newWidget);
     }
 
-    @DeleteMapping("/api/widgets/{wid}")
+    @DeleteMapping("/api/widgets/{widgetId}")
     public Integer deleteWidget(
-            @PathVariable("wid") Integer widgetId) {
+            @PathVariable("widgetId") Integer widgetId) {
         return service.deleteWidget(widgetId);
     }
 }

@@ -136,12 +136,13 @@ public class WidgetService {
     }
 
      public Integer deleteWidget(Integer widgetId) {
-        for (Widget widget: widgets) {
-            if (widget.getId().equals(widgetId)) {
-                widgets.remove(widget);
-                return 1;
-            }
-        }
+        widgetRepository.deleteById(widgetId);
+//        for (Widget widget: widgets) {
+//            if (widget.getId().equals(widgetId)) {
+//                widgets.remove(widget);
+//                return 1;
+//            }
+//        }
         return 0;
     }
 }
