@@ -30,7 +30,7 @@ public class WidgetService {
     }
 
     public List<Widget> findWidgetsForTopic(String topicId) {
-        return (List<Widget>) widgetRepository.findAll();
+        return (List<Widget>) widgetRepository.findWidgetsForTopic(topicId);
 //        List<Widget> returnList = new ArrayList<Widget>();
 //        for (Widget widget: widgets) {
 //            if (widget.getTopicId().equals(topicId)) {
