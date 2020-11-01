@@ -78,6 +78,7 @@ public class WidgetService {
         oldWidget.setStyle(deltaWidget.getStyle());
         oldWidget.setValue(deltaWidget.getValue());
         oldWidget.setHeading(deltaWidget.getHeading());
+        oldWidget.setList(deltaWidget.getList());
     }
 
     public Integer updateWidget(Integer widgetId, Widget deltaWidget) {
