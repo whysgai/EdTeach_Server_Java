@@ -54,6 +54,7 @@ public class WidgetController {
     public List<Widget> updateWidgetsForTopic(
             @PathVariable("topicId") String topicId,
             @RequestBody List<Widget> widgets) {
+        System.out.println("Calling update all widgets CONTROLLER");
         return service.updateWidgetsForTopic(topicId, widgets);
     }
 

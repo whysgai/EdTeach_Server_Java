@@ -108,6 +108,7 @@ public class WidgetService {
     // O 2n + 2n^2 This isn't great, but I cannot think of a way to simplify it.
     // Also concurrent modification, should use iterators instead of for: each
     public List<Widget> updateWidgetsForTopic(String topicId, List<Widget> updateWidgets) {
+        System.out.println("Calling update all widgets SERVICE");
 
         // Narrow list down to widgets for this topic
         // Normally decreasing N isn't the important part, but in this case I think it helps
