@@ -16,13 +16,13 @@ public class WidgetService {
     WidgetRepository widgetRepository;
 
     // Temporary hard-coded data
-    List<Widget> widgets = new ArrayList<Widget>();
-    {
-        widgets.add(new Widget(001, "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
-        widgets.add(new Widget(002, "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
-        widgets.add(new Widget(003, "5f8a045dba6bf60017a5023c", "Widget3", "PARAGRAPH", 2));
-        widgets.add(new Widget(004, "topic2", "Widget3", "HEADING", 0));
-    }
+//    List<Widget> widgets = new ArrayList<Widget>();
+//    {
+//        widgets.add(new Widget(001, "5f8a045dba6bf60017a5023c", "Widget1", "HEADING", 0));
+//        widgets.add(new Widget(002, "5f8a045dba6bf60017a5023c", "Widget2", "PARAGRAPH", 1));
+//        widgets.add(new Widget(003, "5f8a045dba6bf60017a5023c", "Widget3", "PARAGRAPH", 2));
+//        widgets.add(new Widget(004, "topic2", "Widget3", "HEADING", 0));
+//    }
 
     // CRUD operations
     public List<Widget> findAllWidgets() {
@@ -64,10 +64,8 @@ public class WidgetService {
 
 
     public Widget createWidget(String topicId, Widget widget) {
-        widget.setId(Long.valueOf(new Date().getTime()).intValue());
         widget.setTopicId(topicId);
-        widgets.add(widget);
-        return widget;
+        return widgetRepository.save(widget);
     }
 
     private void updateHelper(Widget oldWidget, Widget deltaWidget) {

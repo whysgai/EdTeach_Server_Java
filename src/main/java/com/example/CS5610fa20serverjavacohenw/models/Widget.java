@@ -19,8 +19,9 @@ public class Widget {
     private String style;
     private String value;
     private String heading;
+    private String list;
 
-    public Widget(Integer id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value, String heading) {
+    public Widget(Integer id, String topicId, String title, String type, Integer widgetOrder, String text, String url, Integer size, String cssClass, String style, String value, String heading, String list) {
         this.id = id;
         this.topicId = topicId;
         this.title = title;
@@ -33,6 +34,7 @@ public class Widget {
         this.style = style;
         this.value = value;
         this.heading = heading;
+        this.list = list;
     }
 
     public Widget(Integer id, String topicId, String title, String type, Integer widgetOrder) {
@@ -142,4 +144,13 @@ public class Widget {
     public String getHeading() { return heading; }
 
     public void setHeading(String heading) { this.heading = heading; }
+
+    public String getList() {
+        return list;
+    }
+
+    public void setList(String list) {
+        this.list = list;
+    }
+
 }
