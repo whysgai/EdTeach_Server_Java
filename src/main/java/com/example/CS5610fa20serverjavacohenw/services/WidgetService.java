@@ -64,6 +64,7 @@ public class WidgetService {
 
 
     public Widget createWidget(String topicId, Widget widget) {
+        System.out.println("Creating new widget SERVICE");
         widget.setTopicId(topicId);
         return widgetRepository.save(widget);
     }
